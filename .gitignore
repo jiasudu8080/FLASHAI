@@ -1,0 +1,106 @@
+# API 配置(含密钥)。规则锚定项目根：macOS 大小写不敏感，写 API/ 会把 web/src/**/api/ 源码目录一起忽略掉
+/API/.env
+/API/
+
+# Python
+*.pyc
+__pycache__/
+venv/
+
+# 构建产物 / 打包输出
+build/
+dist/
+dist-desktop/
+FLASHAI-*.zip
+FLASHAI-Setup-*.exe
+*.spec
+*.ccx
+
+# 运行时数据（不推送）
+assets/
+!assets/models/
+# 新前端的 Vite 构建产物必须入库（上面的 assets/ 规则会连带命中 static/v2/assets）
+!static/v2/assets/
+# 新素材库源码目录也必须入库（上面的 assets/ 规则会连带命中 web/src/pages/assets）
+!web/src/pages/assets/
+data/api_providers.json
+data/asset_library.json
+data/prompt_libraries.json
+data/canvases/
+data/conversations/
+data/media_previews/
+data/projects.json
+data/security.json
+data/settings.json
+data/storage_settings.json
+data/update_backups/
+# 下面这些是运行时产生的用户数据（画布版本快照 / Agent 会话 / 运行调度 / 素材索引），
+# 之前漏在 .gitignore 外，会随 git add -A 混进仓库，这里补齐。
+data/canvas_versions/
+data/agent_sessions/
+data/runs/
+data/tasks/
+data/assets_registry.json
+data/asset_hashes.json
+data/memory_library.json
+data/persona_library.json
+data/stub_jobs.json
+data/stub_provider.json
+history.json
+static/runninghub/api_providers.json
+
+# 日志
+logs/
+_flashai_*.log
+
+# 编辑器 / IDE / 工具
+.claude/
+.codegraph/
+.coze
+.deps_installed
+.deps_hash
+.workbuddy/
+.playwright-cli/
+electron/node_modules/
+node_modules/
+smart-canvas.js.bak
+_self_restart.bat
+
+# 测试/调试截图和临时文件
+gpt-chat-*.png
+gpt-chat-*.yml
+test-*.png
+tmp_*.png
+*.bak
+*.bak-*
+tests/artifacts/
+
+# 设计概念稿/临时原型（非正式页面）
+_shimmer-preview/
+static/canvas-entry-redesign-*.html
+static/canvas-list-redesign-*.html
+static/images/concept/*
+!static/images/concept/carousel-*
+!static/images/concept/pinterest_carousel.mp4
+
+# 冗余 vendor 文件（已有子集版本替代）
+static/vendor/js/lucide.js
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 安装包产物 / 运行日志 / 配置备份不入库
+FLASHAI.exe
+flashai_startup.log
+data/*.bak
+output/
+*.bak_minimax
+
+# 运行时数据目录 / 本地备份与预览稿（防止 git add -A 误提交用户数据）
+data/
+_claude_backup/
+_preview/
+# Electron 桌面端构建产物
+desktop/release/
+desktop/dist/
